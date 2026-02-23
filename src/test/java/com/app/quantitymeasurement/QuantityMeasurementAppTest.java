@@ -67,5 +67,65 @@ public class QuantityMeasurementAppTest {
         Length l1 = new Length(1.0, Length.LengthUnit.FEET);
         assertTrue(l1.equals(l1));
     }
+ // UC4 test cases
+ 	@Test
+ 	public void testEquality_YardToYard_SameValue() {
+ 		Length l1 = new Length(1.0, Length.LengthUnit.YARDS);
+ 		Length l2 = new Length(1.0, Length.LengthUnit.YARDS);
+ 		assertTrue(l1.equals(l2));
+ 	}
+
+ 	@Test
+ 	public void testEquality_YardToFeet_EquivalentValue() {
+ 		Length yard = new Length(1.0, Length.LengthUnit.YARDS);
+ 		Length feet = new Length(3.0, Length.LengthUnit.FEET);
+ 		assertTrue(yard.equals(feet));
+ 	}
+
+ 	@Test
+ 	public void testEquality_FeetToYard_EquivalentValue() {
+ 		Length yard = new Length(1.0, Length.LengthUnit.YARDS);
+ 		Length feet = new Length(3.0, Length.LengthUnit.FEET);
+ 		assertTrue(feet.equals(yard));
+ 	}
+
+ 	@Test
+ 	public void testEquality_YardToInches_EquivalentValue() {
+ 		Length yard = new Length(1.0, Length.LengthUnit.YARDS);
+ 		Length inches = new Length(36.0, Length.LengthUnit.INCHES);
+ 		assertTrue(yard.equals(inches));
+ 	}
+
+ 	@Test
+ 	public void testEquality_InchesToYard_EquivalentValue() {
+ 		Length yard = new Length(1.0, Length.LengthUnit.YARDS);
+ 		Length inches = new Length(36.0, Length.LengthUnit.INCHES);
+ 		assertTrue(inches.equals(yard));
+ 	}
+
+ 	@Test
+ 	public void testEquality_CentimeterToInches_EquivalentValue() {
+ 		Length cm = new Length(1.0, Length.LengthUnit.CENTIMETERS);
+ 		Length inch = new Length(0.393701, Length.LengthUnit.INCHES);
+ 		assertTrue(cm.equals(inch));
+ 	}
+
+ 	@Test
+ 	public void testEquality_CentimeterToFeet_NonEquivalentValue() {
+ 		Length cm = new Length(1.0, Length.LengthUnit.CENTIMETERS);
+ 		Length feet = new Length(1.0, Length.LengthUnit.FEET);
+ 		assertFalse(cm.equals(feet));
+ 	}
+
+ 	@Test
+ 	public void testEquality_TransitiveProperty() {
+ 		Length yard = new Length(1.0, Length.LengthUnit.YARDS);
+ 		Length feet = new Length(3.0, Length.LengthUnit.FEET);
+ 		Length inches = new Length(36.0, Length.LengthUnit.INCHES);
+
+ 		assertTrue(yard.equals(feet));
+ 		assertTrue(feet.equals(inches));
+ 		assertTrue(yard.equals(inches));
+ 	}
     
 }
