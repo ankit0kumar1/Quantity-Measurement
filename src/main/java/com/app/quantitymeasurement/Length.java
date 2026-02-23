@@ -75,6 +75,20 @@ public class Length {
     public String toString() {
         return value + " " + unit;
     }
+    //UC6 NEW FEATURE ->Addition of two length units 
+    public Length add(Length other) {
+        if (other == null)
+            throw new IllegalArgumentException("Cannot add null Length");
+
+        double thisBase = this.convertToBaseUnit();
+        double otherBase = other.convertToBaseUnit();
+
+        double sumBase = thisBase + otherBase;
+
+        double resultValue = sumBase / this.unit.getConversionFactor();
+
+        return new Length(resultValue, this.unit);
+    }
     
 	// main for standalone testing
 		public static void main(String[] args) {

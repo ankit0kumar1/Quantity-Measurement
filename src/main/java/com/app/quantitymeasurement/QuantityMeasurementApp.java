@@ -14,7 +14,6 @@ public class QuantityMeasurementApp {
 		return demonstrateLengthEquality(l1, l2);
 	}
 
-	
 	// UC5
 	// Static conversion API
 	public static double convert(double value, Length.LengthUnit from, Length.LengthUnit to) {
@@ -39,10 +38,17 @@ public class QuantityMeasurementApp {
 		return new Length(value, from).convertTo(to);
 	}
 
+	// UC6 NEW METHOD
+	public static Length demonstrateLengthAddition(Length l1, Length l2) {
+		return l1.add(l2);
+	}
+
 	public static void main(String[] args) {
-		System.out.println(convert(1, Length.LengthUnit.FEET, Length.LengthUnit.INCHES)); // 12
-		System.out.println(convert(3, Length.LengthUnit.YARDS, Length.LengthUnit.FEET)); // 9
-		System.out.println(convert(36, Length.LengthUnit.INCHES, Length.LengthUnit.YARDS)); // 1
+		Length l1 = new Length(1.0, Length.LengthUnit.FEET);
+		Length l2 = new Length(12.0, Length.LengthUnit.INCHES);
+
+		Length result = demonstrateLengthAddition(l1, l2);
+		System.out.println(result);
 
 	}
 
