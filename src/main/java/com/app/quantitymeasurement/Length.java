@@ -24,7 +24,10 @@ public class Length {
 	
 	// constructor with validation
 	public Length(double value , LengthUnit unit) {
-		
+		 if (unit == null)
+	            throw new IllegalArgumentException("Unit cannot be null");
+		 if (Double.isNaN(value) || Double.isInfinite(value))
+	            throw new IllegalArgumentException("Invalid numeric value");
 		this.value = value;
 		this.unit = unit;
 	}
@@ -58,6 +61,21 @@ public class Length {
 
         return compare(other);
     }
+	// UC5 NEW FEATURE → Instance conversion
+    public Length convertTo(LengthUnit targetUnit) {
+        if (targetUnit == null)
+            throw new IllegalArgumentException("Target unit cannot be null");
+
+        double baseValue = convertToBaseUnit();
+        double convertedValue = baseValue / targetUnit.getConversionFactor();
+        return new Length(convertedValue, targetUnit);
+    }
+    
+    @Override
+    public String toString() {
+        return value + " " + unit;
+    }
+    
 	// main for standalone testing
 		public static void main(String[] args) {
 			Length length1 = new Length(1.0, LengthUnit.FEET);
