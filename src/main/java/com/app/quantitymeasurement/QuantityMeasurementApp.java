@@ -42,13 +42,22 @@ public class QuantityMeasurementApp {
 	public static Length demonstrateLengthAddition(Length l1, Length l2) {
 		return l1.add(l2);
 	}
+	
+	 //  UC7 NEW 
+    public static Length demonstrateLengthAddition(Length l1,
+                                                   Length l2,
+                                                   Length.LengthUnit targetUnit) {
+        return l1.add(l2, targetUnit);
+    }
 
 	public static void main(String[] args) {
 		Length l1 = new Length(1.0, Length.LengthUnit.FEET);
-		Length l2 = new Length(12.0, Length.LengthUnit.INCHES);
+        Length l2 = new Length(12.0, Length.LengthUnit.INCHES);
 
-		Length result = demonstrateLengthAddition(l1, l2);
-		System.out.println(result);
+        System.out.println(l1.add(l2, Length.LengthUnit.FEET));
+        System.out.println(l1.add(l2, Length.LengthUnit.INCHES));
+        System.out.println(l1.add(l2, Length.LengthUnit.YARDS));
+        System.out.println(l1.add(l2, Length.LengthUnit.CENTIMETERS));
 
 	}
 
