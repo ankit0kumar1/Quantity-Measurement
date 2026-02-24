@@ -35,6 +35,10 @@ public class Length {
 	public double convertToBaseUnit() {
 		return value * unit.getConversionFactor();
 	}
+	
+	 private double convertFromBaseToTargetUnit(double baseValue, LengthUnit targetUnit) {
+	        return baseValue / targetUnit.getConversionFactor();
+	    }
 
 	// compare two length objects
 	 private boolean compare(Length that) {
@@ -73,44 +77,26 @@ public class Length {
 	}
 
 	// UC6 NEW FEATURE ->Addition of two length units
-	public Length add(Length other) {
-		if (other == null)
-			throw new IllegalArgumentException("Cannot add null Length");
+	 public Length add(Length thatLength) {
+	        if (thatLength == null) throw new IllegalArgumentException();
 
-		double thisBase = this.convertToBaseUnit();
-		double otherBase = other.convertToBaseUnit();
+	        double baseSum = this.convertToBaseUnit() + thatLength.convertToBaseUnit();
+	        double result = convertFromBaseToTargetUnit(baseSum, this.unit);
 
-		double sumBase = thisBase + otherBase;
-
-		double resultValue = sumBase / this.unit.getConversionFactor();
-
-		return new Length(resultValue, this.unit);
-	}
+	        return new Length(result, this.unit);
+	    }
 
 	// UC7 – Add with explicit target unit
-	public Length add(Length other, LengthUnit targetUnit) {
+	 public Length add(Length thatLength, LengthUnit targetUnit) {
+	        if (thatLength == null || targetUnit == null) {
+	            throw new IllegalArgumentException();
+	        }
 
-	    if (other == null)
-	        throw new IllegalArgumentException("Length to add cannot be null");
+	        double baseSum = this.convertToBaseUnit() + thatLength.convertToBaseUnit();
+	        double result = convertFromBaseToTargetUnit(baseSum, targetUnit);
 
-	    if (targetUnit == null)
-	        throw new IllegalArgumentException("Target unit cannot be null");
-
-	    if (!Double.isFinite(other.value))
-	        throw new IllegalArgumentException("Invalid length value");
-
-	    // Convert both to base unit (inches)
-	    double thisBase = this.convertToBaseUnit();
-	    double otherBase = other.convertToBaseUnit();
-
-	    // Add in base
-	    double sumBase = thisBase + otherBase;
-
-	    
-	    double resultValue = sumBase / targetUnit.getConversionFactor();
-
-	    return new Length(resultValue, targetUnit);
-	}
+	        return new Length(result, targetUnit);
+	    }
 
 	// main for standalone testing
 	public static void main(String[] args) {
