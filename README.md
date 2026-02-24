@@ -115,3 +115,68 @@ Add support for the **Inches** unit alongside **Feet**.
 ### 🧠 Learning Outcome
 Recognized the need for refactoring.  
 This use case highlighted how duplication signals a design flaw and pushed the system toward a more generic, extensible solution.
+
+---
+
+## 🔵 UC3 — Refactor to Generic Length Class
+
+### 🎯 Goal
+Eliminate duplication by introducing a generic measurement model.
+
+---
+
+### 🛠 Refactoring Done
+
+Removed:
+- ❌ `Feet` class
+- ❌ `Inches` class
+
+Introduced:
+- ✅ `Length` class
+- ✅ `LengthUnit` enum
+
+---
+
+### 🧠 Core Design Change
+
+Replaced multiple concrete classes:
+
+- Feet  
+- Inches  
+
+With a single generic model:
+
+```
+Length(value, LengthUnit)
+```
+
+### 📐 Base Unit Concept
+
+All units are internally converted to **INCHES** (base unit).
+
+- 1 Foot = 12 Inches  
+- 1 Inch = 1 Inch  
+
+Added method:
+```
+convertToBaseUnit()
+```
+
+### 🧪 Tests Covered
+
+- ✔ Feet = Feet  
+- ✔ Inches = Inches  
+- ✔ 1 Foot = 12 Inches  
+- ✔ Symmetry  
+- ✔ Transitive equality  
+- ✔ `equals()` contract validation  
+
+### 🧠 Learning Outcome
+
+- Safe refactoring using tests  
+- Generic design thinking  
+- Strong domain modeling  
+- DRY principle implementation  
+
+---
+
