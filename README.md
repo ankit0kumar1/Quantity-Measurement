@@ -1,1 +1,60 @@
-# Quantity-Measurement
+# 📏 Quantity Measurement App
+
+## 🧾 Overview
+The Quantity Measurement App is a Test-Driven Development (TDD) based project that demonstrates how to build scalable and maintainable software through incremental development.
+
+The application focuses on comparing and converting length measurements across different units while following:
+
+- Test-Driven Development (TDD)
+- Clean Code Principles
+- DRY (Don’t Repeat Yourself)
+- Professional Git Workflow (feature branches + PR)
+
+The project evolves step-by-step through Use Cases (UCs), with each UC introducing a small feature and refining the design to keep the system extensible and clean.
+
+
+## 🧪 Development Methodology
+
+This project follows the TDD cycle:
+
+🔴 Write a failing test  
+🟢 Write minimal code to pass  
+🔵 Refactor safely  
+
+This ensures:
+- Code safety
+- Maintainability
+- Scalability
+
+## 🌳 Git Workflow
+
+- `main` → Stable production code  
+- `dev` → Integration branch  
+- `feature/UCx-*` → Individual feature branches  
+
+Each Use Case was:
+1. Developed in a feature branch  
+2. Tested locally  
+3. Pushed with a Pull Request  
+4. Reviewed and merged into `dev`  
+
+## 📌 Key Features
+
+- Compare lengths across different units
+- Convert between units
+- Easily extendable unit system
+- Fully covered with unit tests
+
+---
+
+
+## 📂 Project Structure
+
+```
+src/
+ ├── main/java/
+ └── test/java/
+```
+
+---
+
