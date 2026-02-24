@@ -58,3 +58,38 @@ src/
 
 ---
 
+📚 USE CASE IMPLEMENTATION
+## 🟢 UC1 — Feet Equality
+🎯 Goal
+
+Compare two Feet measurements for equality.
+
+🧪 Tests Written
+
+We validated the equals contract:
+
+Same value → equal
+
+Different value → not equal
+
+Null comparison → false
+
+Different object type → false
+
+Same reference → true
+
+💻 Implementation
+
+Created Feet class with:
+
+value field
+
+equals() method
+
+🧠 Learning Outcome
+
+Understanding equality contract
+
+First step of TDD
+
+---
