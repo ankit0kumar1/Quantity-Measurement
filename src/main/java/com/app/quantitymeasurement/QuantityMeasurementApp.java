@@ -8,7 +8,7 @@ public class QuantityMeasurementApp {
 		return quantity1.equals(quantity2);
 	}
 
-	// generic conversion demo
+	
 	// generic conversion demo
 	public static <U extends IMeasurable> Quantity<U> demonstrateConversion(Quantity<U> quantity, U targetUnit) {
 		return quantity.convertTo(targetUnit);
