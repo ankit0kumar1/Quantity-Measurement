@@ -93,3 +93,25 @@ Understanding equality contract
 First step of TDD
 
 ---
+
+## 🟢 UC2 — Inches Equality
+
+### 🎯 Goal
+Add support for the **Inches** unit alongside **Feet**.
+
+### 🧪 Tests Written
+- Inches = Inches equality tests  
+- Repeated the same equality logic used for Feet  
+
+### 💻 Implementation
+- Created an `Inches` class similar to the existing `Feet` class  
+- Implemented equality comparison  
+
+### ⚠️ Problem Observed
+- Significant code duplication  
+- `Feet` and `Inches` contained identical logic  
+- Violated the **DRY (Don’t Repeat Yourself)** principle  
+
+### 🧠 Learning Outcome
+Recognized the need for refactoring.  
+This use case highlighted how duplication signals a design flaw and pushed the system toward a more generic, extensible solution.
