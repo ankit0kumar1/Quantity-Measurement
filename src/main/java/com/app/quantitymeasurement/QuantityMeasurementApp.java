@@ -1,6 +1,5 @@
 package com.app.quantitymeasurement;
 
-
 public class QuantityMeasurementApp {
 
 	// generic equality demo
@@ -60,5 +59,25 @@ public class QuantityMeasurementApp {
 		// addition
 		Quantity<WeightUnit> addedWeight = weight1.add(weight2);
 		System.out.println("1 Kg + 1000 g in Kg : " + addedWeight.getValue());
+
+		// ================= UC11 VOLUME DEMO =================
+		Quantity<VolumeUnit> volume1 = new Quantity<>(1.0, VolumeUnit.LITRE);
+		Quantity<VolumeUnit> volume2 = new Quantity<>(1000.0, VolumeUnit.MILLILITRE);
+		Quantity<VolumeUnit> volume3 = new Quantity<>(1.0, VolumeUnit.GALLON);
+
+		// Equality
+		System.out.println("Volume Equality L↔mL: " + demonstrateEquality(volume1, volume2));
+		System.out.println("Volume Equality L↔Gallon: " + demonstrateEquality(volume1, volume3));
+
+		// Conversion
+		System.out.println("Convert Litre → mL: " + demonstrateConversion(volume1, VolumeUnit.MILLILITRE));
+		System.out.println("Convert Gallon → Litre: " + demonstrateConversion(volume3, VolumeUnit.LITRE));
+
+		// Addition (implicit target unit)
+		System.out.println("Add L + mL: " + demonstrateAddition(volume1, volume2));
+
+		// Addition (explicit target unit)
+		System.out.println("Add L + Gallon → mL: " + demonstrateAddition(volume1, volume3, VolumeUnit.MILLILITRE));
+
 	}
 }
