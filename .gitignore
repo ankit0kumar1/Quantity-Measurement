@@ -1,15 +1,16 @@
-
-# Eclipse
-.settings/
+# Eclipse / STS
+.metadata/
 .classpath
 .project
+.settings/
+.factorypath
 
 # Maven
 target/
 
-# Logs
+# Log files
 *.log
 
-# OS Files
+# OS files
 .DS_Store
 Thumbs.db
