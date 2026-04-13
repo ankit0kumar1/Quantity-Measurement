@@ -38,6 +38,8 @@ public class Quantity<U extends IMeasurable> {
 		ADD((a, b) -> a + b),
 
 		SUBTRACT((a, b) -> a - b),
+		
+		MULTIPLY((a, b) -> a * b),
 
 		DIVIDE((a, b) -> {
 			if (b == 0.0)
@@ -97,7 +99,7 @@ public class Quantity<U extends IMeasurable> {
 		if (targetUnit == null)
 			throw new IllegalArgumentException("Target unit cannot be null");
 
-		// UC14 SPECIAL HANDLING FOR TEMPERATURE
+		//  UC14 SPECIAL HANDLING FOR TEMPERATURE 
 		if (unit instanceof TemperatureUnit && targetUnit instanceof TemperatureUnit) {
 
 			TemperatureUnit source = (TemperatureUnit) unit;
@@ -107,7 +109,7 @@ public class Quantity<U extends IMeasurable> {
 			return new Quantity<>(convertedValue, targetUnit);
 		}
 
-		// Old logic for Length/Weight/Volume
+		// Old logic for Length/Weight/Volume 
 		double baseValue = toBaseUnit();
 		double convertedValue = targetUnit.convertFromBaseUnit(baseValue);
 
@@ -159,6 +161,12 @@ public class Quantity<U extends IMeasurable> {
 		return performBaseArithmetic(other, this.unit, ArithmeticOperation.DIVIDE);
 	}
 
+	// MULTIPLY
+	public double multiply(Quantity<U> other) {
+	    validateArithmeticOperands(other, null, false);
+	    return performBaseArithmetic(other, this.unit, ArithmeticOperation.MULTIPLY);
+	}
+	
 	// Equality & Hashing
 	@Override
 	public boolean equals(Object obj) {
